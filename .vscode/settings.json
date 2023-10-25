@@ -1,0 +1,12 @@
+{
+    "cucumberautocomplete.steps": [
+        "cypress/support/stepDefs/*.js",
+        "node_modules/cypress-cucumber-preprocessor/lib/getStepDefinitionsPaths.js"
+    ],
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "generate-cucumber-steps.stepFunctionType": "arrow function",
+    "cucumber-quick": {
+        "tool": "cypress",
+        "script": "npx cypress-tags"
+    }
+}

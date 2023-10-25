@@ -3,6 +3,7 @@ const { downloadFile } = require("cypress-downloadfile/lib/addPlugin");
 const { isFileExist } = require("cy-verify-downloads");
 const xlsx = require("node-xlsx").default;
 const request = require("request");
+const cucumber = require("cypress-cucumber-preprocessor").default;
 
 module.exports = defineConfig({
   e2e: {
@@ -11,6 +12,8 @@ module.exports = defineConfig({
       on("task", { downloadFile });
 
       on("task", { isFileExist });
+
+      on("file:preprocessor", cucumber());
 
       on("task", {
         parseXlsx(args) {
@@ -42,5 +45,9 @@ module.exports = defineConfig({
     video: true,
     requestTimeout: 5000,
     responseTimeout: 5000,
+    specPattern: "**/*.feature",
+    env: {
+      TAGS: "@smoke",
+    },
   },
 });

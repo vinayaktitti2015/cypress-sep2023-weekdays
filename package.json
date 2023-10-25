@@ -15,11 +15,22 @@
   "devDependencies": {
     "cy-verify-downloads": "^0.2.1",
     "cypress": "^13.2.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-downloadfile": "^1.2.3",
     "cypress-iframe": "^1.0.1",
     "node-xlsx": "^0.23.0",
     "request": "^2.88.2",
     "xlsx": "^0.18.5",
     "xpath_cypress": "^1.0.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/stepDefs/",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "./cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   }
 }

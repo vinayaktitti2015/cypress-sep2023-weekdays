@@ -16,8 +16,6 @@
 // global imports for files
 // Import commands.js using ES2015 syntax:
 import "./commands";
-import "./products";
-
 
 import "cypress-iframe";
 require('cypress-downloadfile/lib/downloadFileCommand')

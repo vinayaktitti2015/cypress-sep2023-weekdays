@@ -25,13 +25,6 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 // global reusable functions
-Cypress.Commands.add("userLogin", () => {
-  cy.log("User login successfully");
-});
-
-Cypress.Commands.add("userSignup", () => {
-  cy.log("User signup successfully");
-});
 
 // parameterized commands
 Cypress.Commands.add("userLogin", (username, password) => {
