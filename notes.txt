@@ -1,0 +1,13 @@
+// test frameworks
+1. mocha framework
+2. jest framework
+3. BDD frameworks using cucumber 
+
+3 amigos - PO/SM/Developer/Testers go for the BDD framework
+
+// design framework
+1. Page Object Model pattern
+2. Facade pattern
+3. BDD pattern
+4. Browser Driver pattern - apply for Selenium
+5. Singleton design pattern - apply for Selenium

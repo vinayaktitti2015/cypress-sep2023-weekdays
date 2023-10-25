@@ -1,0 +1,16 @@
+{
+  "products": [
+    {
+      "electronics": "camera"
+    },
+    {
+      "computers": "desktops"
+    },
+    {
+      "books": {
+        "book1": "book1",
+        "book2": "book2"
+      }
+    }
+  ]
+}
