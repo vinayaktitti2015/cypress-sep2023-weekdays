@@ -4,7 +4,7 @@
   "description": "cypress tests",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run -s 'cypress/e2e/specs/*.spec.cy.js'"
   },
   "keywords": [
     "cypress",
@@ -13,6 +13,8 @@
   "author": "vinayak",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.2.0",
+    "chai": "^4.3.10",
     "cy-verify-downloads": "^0.2.1",
     "cypress": "^13.2.0",
     "cypress-downloadfile": "^1.2.3",
