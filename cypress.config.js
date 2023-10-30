@@ -42,5 +42,9 @@ module.exports = defineConfig({
     video: true,
     requestTimeout: 5000,
     responseTimeout: 5000,
+    retries: {
+      openMode: 2,
+      runMode: 1,
+    },
   },
 });
