@@ -7,8 +7,10 @@ describe("login feature", () => {
 
   // test cases
   it.only("test login with css selectors", () => {
-    cy.get('[name="username"]').clear().type("Admin");
-    cy.get('[name="password"]').clear().type("admin123");
+    //cy.pause()
+    cy.get('[name="username"]').debug()
+    cy.get('[name="username"]').clear().type("Admin")
+    cy.get('[name="password"]').clear().type("admin123").debug()
     cy.get('[type="submit"]')
       .click()
       .then(() => {
@@ -17,6 +19,8 @@ describe("login feature", () => {
         // add comments
         // update login
       });
+
+      //cy.get('.oxd-button--ghost')
   });
 
   it.skip("test login with xpath selectors", () => {

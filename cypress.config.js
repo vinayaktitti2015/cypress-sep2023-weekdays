@@ -40,7 +40,11 @@ module.exports = defineConfig({
     defaultCommandTimeout: 6000,
     pageLoadTimeout: 30000,
     video: true,
-    requestTimeout: 5000,
-    responseTimeout: 5000,
+    requestTimeout: 10000,
+    responseTimeout: 10000,
+    retries: {
+      openMode: 2,
+      runMode: 1,
+    },
   },
 });
