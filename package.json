@@ -4,7 +4,8 @@
   "description": "cypress tests",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run -r mocha-allure2-reporter -s 'cypress/e2e/dbtests/dbRecords.spec.cy.js'",
+    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
   },
   "keywords": [
     "cypress",
@@ -18,6 +19,8 @@
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-downloadfile": "^1.2.3",
     "cypress-iframe": "^1.0.1",
+    "mocha-allure2-reporter": "^0.0.3",
+    "mysql2": "^3.6.2",
     "node-xlsx": "^0.23.0",
     "request": "^2.88.2",
     "xlsx": "^0.18.5",

@@ -47,3 +47,47 @@ Cypress.Commands.add("switchToIframe", (iframe) => {
 Cypress.Commands.add("parseXlsx", (url) => {
   return cy.task("parseXlsx", { url: url });
 });
+
+Cypress.Commands.add("insertRecords", (args) => {
+  const query = args;
+
+  cy.task("queryDB", query).then((results) => {
+    cy.log("results", JSON.stringify(results));
+  });
+});
+
+Cypress.Commands.add("fetchRecords", (url) => {
+  const query = "SELECT * FROM Customers";
+
+  cy.task("queryDB", query).then((results) => {
+    expect(results.length).to.equal(1);
+    expect(results[0].LastName).to.equal("Doe");
+    expect(results[0].FirstName).to.equal("John");
+  });
+});
+
+Cypress.Commands.add("updaterecords", function () {
+  // update query
+  const query =
+    'UPDATE Customers SET Address ="Hyderabad telangana" WHERE PersonID = 1';
+
+  cy.task("queryDB", query).then((results) => {
+    cy.log("results", JSON.stringify(results));
+  });
+
+  // fetch the results from the database
+  const fetchQuery = "SELECT * FROM Customers";
+  cy.task("queryDB", fetchQuery).then((results) => {
+    //expect(results.length).to.equal(1);
+    expect(results[0].Address).to.equal("Bangalore");
+  });
+});
+
+Cypress.Commands.add("deleteRecord", function (args) {
+  const query = args;
+
+  cy.task("queryDB", query).then((results) => {
+    //expect(results.length).to.equal(0);
+    cy.log("results", JSON.stringify(results));
+  });
+});

@@ -4,6 +4,27 @@ const { isFileExist } = require("cy-verify-downloads");
 const xlsx = require("node-xlsx").default;
 const request = require("request");
 const cucumber = require("cypress-cucumber-preprocessor").default;
+const mysql = require("mysql2");
+
+function queryTestDb(query, config) {
+  // creates a new mysql connection using credentials from cypress.config.js envs
+  const connection = mysql.createConnection(config.env.db);
+
+  // start connection to db
+  connection.connect();
+
+  // exec query + disconnect to db as a Promise
+  return new Promise((resolve, reject) => {
+    connection.query(query, (error, results) => {
+      if (error) reject(error);
+      else {
+        connection.end();
+        // console.log(results)
+        return resolve(results);
+      }
+    });
+  });
+}
 
 module.exports = defineConfig({
   e2e: {
@@ -14,6 +35,13 @@ module.exports = defineConfig({
       on("task", { isFileExist });
 
       on("file:preprocessor", cucumber());
+
+      // event listerner for DB query results
+      on("task", {
+        queryDB: (query) => {
+          return queryTestDb(query, config);
+        },
+      });
 
       on("task", {
         parseXlsx(args) {
@@ -45,9 +73,14 @@ module.exports = defineConfig({
     video: true,
     requestTimeout: 5000,
     responseTimeout: 5000,
-    specPattern: "**/*.feature",
+    //specPattern: "**/*.feature",
+    // db credentials for database
     env: {
-      TAGS: "@smoke",
+      db: {
+        host: "localhost",
+        user: "root",
+        database: "Users",
+      },
     },
   },
 });
